@@ -1,0 +1,75 @@
+#!/bin/sh
+	# wasmedge shell setup
+	# affix colons on either side of $PATH to simplify matching
+	case :"${PATH}": in
+		*:"/root/.wasmedge/bin":*)
+			;;
+		*)
+			# Prepending path in case a system-installed wasmedge needs to be overridden
+			if [ -n "${PATH}" ]; then
+				export PATH="/root/.wasmedge/bin":$PATH
+			else
+				export PATH="/root/.wasmedge/bin"
+		fi
+		;;
+esac
+case :"${LD_LIBRARY_PATH}": in
+	*:"/root/.wasmedge/lib":*)
+		;;
+	*)
+		# Prepending path in case a system-installed wasmedge libs needs to be overridden
+		if [ -n "${LD_LIBRARY_PATH}" ]; then
+			export LD_LIBRARY_PATH="/root/.wasmedge/lib":$LD_LIBRARY_PATH
+		else
+			export LD_LIBRARY_PATH="/root/.wasmedge/lib"
+		fi
+		;;
+esac
+case :"${LIBRARY_PATH}": in
+	*:"/root/.wasmedge/lib":*)
+		;;
+	*)
+		if [ -n "${LIBRARY_PATH}" ]; then
+			export LIBRARY_PATH="/root/.wasmedge/lib":$LIBRARY_PATH
+		else
+			export LIBRARY_PATH="/root/.wasmedge/lib"
+		fi
+		;;
+esac
+case :"${C_INCLUDE_PATH}": in
+	*:"/root/.wasmedge/include":*)
+		;;
+	*)
+		if [ -n "${C_INCLUDE_PATH}" ]; then
+			export C_INCLUDE_PATH="/root/.wasmedge/include":$C_INCLUDE_PATH
+		else
+			export C_INCLUDE_PATH="/root/.wasmedge/include"
+		fi
+		;;
+esac
+case :"${CPLUS_INCLUDE_PATH}": in
+	*:"/root/.wasmedge/include":*)
+		;;
+	*)
+		if [ -n "${CPLUS_INCLUDE_PATH}" ]; then
+			export CPLUS_INCLUDE_PATH="/root/.wasmedge/include":$CPLUS_INCLUDE_PATH
+		else
+			export CPLUS_INCLUDE_PATH="/root/.wasmedge/include"
+		fi
+		;;
+esac
+# Please do not edit comments below this for uninstallation purpose
+#/root/.wasmedge//lib/libwasmedge.so.0
+#/root/.wasmedge//lib/libwasmedge.so.0.1.0
+#/root/.wasmedge//lib/libwasmedge.so
+#/root/.wasmedge//bin/wasmedge
+#/root/.wasmedge//bin/wasmedgec
+#/root/.wasmedge//include/wasmedge/
+#/root/.wasmedge//include/wasmedge/version.h
+#/root/.wasmedge//include/wasmedge/enum_types.h
+#/root/.wasmedge//include/wasmedge/enum.inc
+#/root/.wasmedge//include/wasmedge/enum_errcode.h
+#/root/.wasmedge//include/wasmedge/wasmedge.h
+#/root/.wasmedge//include/wasmedge/enum_configure.h
+#/root/.wasmedge//include/wasmedge/int128.h
+#/root/.wasmedge/plugin/libwasmedgePluginWasiNN.so
